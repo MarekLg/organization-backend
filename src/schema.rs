@@ -1,11 +1,7 @@
 use juniper::{graphql_object, EmptySubscription, RootNode};
+use sqlx::PgPool;
 
-pub use context::Context;
-
-use self::task::{TaskMutation, TaskQuery};
-
-mod context;
-mod task;
+use crate::task::{TaskMutation, TaskQuery};
 
 pub struct Query;
 
@@ -24,6 +20,12 @@ impl Mutation {
         TaskMutation
     }
 }
+
+pub struct Context {
+    pub pool: PgPool,
+}
+
+impl juniper::Context for Context {}
 
 pub fn schema() -> RootNode<'static, Query, Mutation, EmptySubscription<Context>> {
     RootNode::new(Query, Mutation, EmptySubscription::new())

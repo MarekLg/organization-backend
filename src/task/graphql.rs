@@ -1,9 +1,9 @@
-use juniper::{graphql_object, FieldError, FieldResult, GraphQLError, GraphQLInputObject};
+use juniper::{graphql_object, FieldResult, GraphQLInputObject};
 use uuid::Uuid;
 
-use crate::model::task::Task;
+use crate::schema::Context;
 
-use super::context::Context;
+use super::model::Task;
 
 #[graphql_object(context = Context)]
 impl Task {

@@ -155,7 +155,7 @@ impl Task {
 mod tests {
     use sqlx::PgPool;
 
-    use crate::model::task::Task;
+    use super::Task;
 
     async fn setup_task(pool: &PgPool, title: String, description: Option<String>) -> Task {
         sqlx::query_as!(

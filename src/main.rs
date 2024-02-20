@@ -5,8 +5,8 @@ use schema::{schema, Context};
 use sqlx::PgPool;
 use warp::Filter;
 
-mod model;
 mod schema;
+mod task;
 
 #[tokio::main]
 async fn main() {
